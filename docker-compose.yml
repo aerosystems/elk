@@ -1,4 +1,6 @@
 networks:
+  default:
+    driver: bridge
   verifire_log_network:
     external: true
 
@@ -108,6 +110,7 @@ services:
       retries: 120
     networks:
       - verifire_log_network
+      - default
 
   kibana:
     depends_on:
@@ -142,6 +145,7 @@ services:
       retries: 120
     networks:
       - verifire_log_network
+      - default
 
   logstash01:
     depends_on:
@@ -165,3 +169,4 @@ services:
       - ELASTIC_HOSTS=https://es01:9200
     networks:
       - verifire_log_network
+      - default
